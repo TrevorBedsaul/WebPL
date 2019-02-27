@@ -15,7 +15,7 @@
 </head>
 <script>
     function setFocus() {
-        document.getElementById('taskdesc').focus();
+        document.getElementById('name').focus();
         //another way (by name instead of ID)
         //document.mainform.desc.focus();
 
@@ -75,23 +75,42 @@
                         <th>Attendance</th>
                     </tr>
                 </thead>
-
-                <!-- 8. write JS to dynamically create add new row upon form submission -->
-                <script>
-                    function addRow() {
-                        var desc = document.getElementById("taskdesc").value;
-                        var due = document.getElementById("duedate").value;
-                        var priority = document.getElementById("priority").value;
-                        var tableRef = document.getElementById("todoTable");
-                        var newRow = tableRef.instertRow(tableRef.rows.length);
-                        newRow.onmouseover = function () {
-                            tableRef.clickedRowIndex = this.rowIndex;
-                        }
-                    }
-                </script>
             </table>
         </div>
     </div>
+    <script>
+        function addRow() {
+            var name = document.getElementById("name").value;
+            var hometown = document.getElementById("hometown").value;
+            var major = document.getElementById("major").value;
+            var year = document.getElementById("year").value;
+            // var address = document.getElementById("address").value;
+
+            document.getElementById("name").value = "";
+            document.getElementById("hometown").value = "";
+            document.getElementById("major").value = "";
+            document.getElementById("year").value = "";
+            document.getElementById("address").value = "";
+
+            var tableRef = document.getElementById("todoTable");
+            var newRow = tableRef.instertRow(tableRef.rows.length);
+
+
+            newRow.onmouseover = function () {
+                tableRef.clickedRowIndex = this.rowIndex;
+            };
+            var newCell = "";
+            var i = 0;
+            // insert new cells (<td> elements) at the 1st, 2nd, 3rd, 4th position of the new <tr> element
+            // using insertCell(method) method        	      
+            while (i < 4) {
+                newCell = newRow.insertCell(i);
+                newCell.innerHTML = rowdata[i];
+                newCell.onmouseover = this.rowIndex;
+                i++;
+            }
+        };
+    </script>
 </body>
 
 </html>
