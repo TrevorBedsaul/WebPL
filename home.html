@@ -1,0 +1,97 @@
+<!-- 1. create HTML5 doctype -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example: HTML, CSS and bootstrap, JS and DOM</title>
+
+    <!--bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+
+
+</head>
+<script>
+    function setFocus() {
+        document.getElementById('taskdesc').focus();
+        //another way (by name instead of ID)
+        //document.mainform.desc.focus();
+
+        //another way (by tags)
+        //document.form[0].element[0].focus();
+    }
+</script>
+
+<body onload="setFocus();">
+    <div class="container">
+        <h1>All Rushees</h1>
+
+        <form name="mainform">
+
+            <div class="form-group">
+                <label for="taskdesc">Full Name</label>
+                <input type="text" id="taskdesc" class="form-control" name="desc" />
+                <span class="error" id="taskdesc-note"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="duedate">Hometown</label>
+                <input type="text" id="taskdesc" class="form-control" name="desc" />
+                <span class="error" id="taskdesc-note"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Major</label>
+                <input type="text" id="taskdesc" class="form-control" name="desc" />
+                <span class="error" id="taskdesc-note"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Year</label>
+                <input type="text" id="taskdesc" class="form-control" name="desc" />
+                <span class="error" id="taskdesc-note"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Address</label>
+                <input type="text" id="taskdesc" class="form-control" name="desc" />
+                <span class="error" id="taskdesc-note"></span>
+            </div>
+
+            <input type="button" class="btn btn-light" id="add" value="Add Rushee" onclick="addRow()" />
+        </form>
+
+        <br />
+        <div id="todo">
+            <table id="todoTable" class="table">
+                <thead>
+                    <!-- set table headers -->
+                    <tr>
+                        <th>Name</th>
+                        <th>Hometown</th>
+                        <th>Year</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+
+                <!-- 8. write JS to dynamically create add new row upon form submission -->
+                <script>
+                    function addRow() {
+                        var desc = document.getElementById("taskdesc").value;
+                        var due = document.getElementById("duedate").value;
+                        var priority = document.getElementById("priority").value;
+                        var tableRef = document.getElementById("todoTable");
+                        var newRow = tableRef.instertRow(tableRef.rows.length);
+                        newRow.onmouseover = function () {
+                            tableRef.clickedRowIndex = this.rowIndex;
+                        }
+                    }
+                </script>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
