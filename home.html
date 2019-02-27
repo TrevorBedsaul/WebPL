@@ -26,7 +26,7 @@
 
 <body onload="setFocus();">
     <div class="container">
-        <h1>All Rushees</h1>
+        <h1>Rushees</h1>
 
         <form name="mainform">
 
@@ -71,8 +71,9 @@
                     <tr>
                         <th>Name</th>
                         <th>Hometown</th>
+                        <th>Major</th> 
                         <th>Year</th>
-                        <th>Attendance</th>
+                        <!-- <th>Attendance</th> -->
                     </tr>
                 </thead>
             </table>
@@ -93,8 +94,8 @@
             document.getElementById("address").value = "";
 
             var tableRef = document.getElementById("todoTable");
-            var newRow = tableRef.instertRow(tableRef.rows.length);
-
+            var newRow = tableRef.insertRow(tableRef.rows.length);
+            var rowdata = [name, hometown, major, year];
 
             newRow.onmouseover = function () {
                 tableRef.clickedRowIndex = this.rowIndex;
