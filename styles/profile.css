@@ -1,0 +1,46 @@
+div {
+	border-style: solid;
+	border-width: 2px;
+}
+
+#row {
+	display: inline-block;
+	width: 100%;
+}
+
+#profilePhoto {
+	display: inherit;
+	width: 300px;
+	height: 300px;
+	margin: 50px;
+}
+
+#profileInfo {	
+	display: inherit;
+	height: 350px;
+	width: 350px;
+	vertical-align: middle;
+
+}
+
+#privNotes {
+	display: inherit;
+	vertical-align: middle;	
+	height: 350px;
+	width: 350px;			
+}
+
+#events {
+	display: inherit;
+	height: 350px;
+	width: 350px;
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+#pubNotes {		
+	display: inherit;
+	height: 350px;	
+	width: 705px;		
+}
+
