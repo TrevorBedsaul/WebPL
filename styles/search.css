@@ -1,0 +1,12 @@
+/*used https://medium.freecodecamp.org/how-to-center-things-with-style-in-css-dc87b7542689 for some help */
+
+#searchContainer {
+	width: 100%;
+	text-align: center;
+}
+
+#searchDiv {
+	width: 700px;
+	margin-top: 50px;
+	display: inline-block;
+}
