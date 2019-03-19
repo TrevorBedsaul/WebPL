@@ -6,13 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Example Search Page</title>
 
-    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/search.css" />
 
     <script>
         var setfocus = () => document.getElementById('searchBar').focus();
 
+        function checkForm() {
+        if (document.getElementById('searchBar').value == "") {
+            alert("Please input something to search it.");
+            setfocus();
+            return false;
+        }
+        return true;
+    };
 
     </script>
     
@@ -21,7 +28,7 @@
 <body onload="setfocus()"">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">CrushRush</a>
+        <a class="navbar-brand" href="home.html">CrushRush</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
@@ -37,7 +44,7 @@
                 <div class="form-group">
                     <label for="searchBar">Rushee Name</label>
                     <input type="text" id="searchBar" class="form-control" />
-                    <button class="btn btn-primary mb-2" type="button" style="margin-top: 10px;">Search</button>
+                    <button class="btn btn-primary mb-2" type="button" style="margin-top: 10px;" onclick="checkForm()">Search</button>
                 </div>
             </form>
         </div>

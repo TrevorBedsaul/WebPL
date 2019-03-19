@@ -1,0 +1,23 @@
+.my-button:hover {
+    background-color: navy;
+    color: orange;
+    border-color: orange;
+}
+
+.my-button {
+    background-color: orange;
+    color: navy;
+    border-color: navy;
+}
+
+tr {
+    border-color: navy;
+}
+
+td {
+    border-color: navy;
+}
+
+th {
+    border-color: navy;
+}
