@@ -44,6 +44,7 @@
 
     </nav>
 
+    <!--Form for adding rushees-->
     <div class="container" style="margin-top: 100px; color: navy; ">
         <h1>Rushees</h1>
 
@@ -51,42 +52,56 @@
 
             <div class="form-group" style="float: left; width:30%;">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" class="form-control" name="name" />
+                <input type="text" id="name" class="form-control" Placeholder="ex: John Doe" name="name" />
                 <span class="error" id="name-note"></span>
             </div>
 
             <div class="form-group" style="float: left; padding-left: 2%; width:70%">
                 <label for="hometown">Hometown</label>
-                <input type="text" id="hometown" class="form-control" name="hometown" />
+                <input type="text" id="hometown" class="form-control" Placeholder="ex: Charlottesville, VA"
+                    name="hometown" />
                 <span class="error" id="hometown-note"></span>
             </div>
 
-            <div class="form-group" style="float: left; width:72%;">
+            <div class="form-group" style="float: left; width:70%;">
                 <label for="address">UVa Address</label>
-                <input type="text" id="address" class="form-control" name="address" />
+                <input type="text" id="address" class="form-control" Placeholder="ex: Hancock 104" name="address" />
                 <span class="error" id="address-note"></span>
             </div>
 
             <div class="form-group" style="float: left; padding-left: 2%; width:20%;">
                 <label for="major">Major</label>
-                <input type="text" id="major" class="form-control" name="major" />
+                <input type="text" id="major" class="form-control" Placeholder="ex: Economics and CS" name="major" />
                 <span class="error" id="major-note"></span>
             </div>
 
-            <div class="form-group" style="float: left; padding-left: 2%; width:8%;">
+            <div class="form-group" style="float: left; padding-left: 2%; width:10%;">
                 <label for="year">Year</label>
-                <input type="text" id="year" class="form-control" name="year" />
+                <input type="text" id="year" class="form-control" Placeholder="ex: 1st" name="year" />
                 <span class="error" id="year-note"></span>
             </div>
 
             <input type="button" class="btn my-button" id="add" value="Add Rushee" onclick="addRow()" />
+            <div id="name-msg"></div>
         </form>
+
+        <!--Event Listener-->
+        <script>
+            document.getElementById('name').addEventListener("input", function () {
+                if (document.getElementById('name').value.indexOf(' ') == -1) {
+                    document.getElementById('name-msg').textContent = "Please type in a full name";
+                }
+                else {
+                    document.getElementById('name-msg').textContent = "";
+                }
+            });
+        </script>
 
         <br />
         <div id="todo">
             <table id="todoTable" class="table">
                 <thead>
-                    <!-- set table headers -->
+                    <!--headers-->
                     <tr>
                         <th style="border-color: navy">Name</th>
                         <th style="border-color: navy">Hometown</th>
@@ -120,7 +135,7 @@
                     tableRef.clickedRowIndex = this.rowIndex;
                 };
                 var newCell = "";
-                var i = 0;      	      
+                var i = 0;
                 while (i < 4) {
                     newCell = newRow.insertCell(i);
                     newCell.innerHTML = rowdata[i];
