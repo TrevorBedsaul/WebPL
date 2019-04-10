@@ -1,0 +1,16 @@
+#mainDiv {
+	text-align: center;
+}
+
+#loginDiv {
+	display: inline-block;
+	height: 300px;
+	width: 300px;	
+	padding-top: 200px;
+}
+
+#logoDiv {
+	padding-bottom: 20px;
+	font-size: 30px;
+	font-family: Avantgarde;
+}
