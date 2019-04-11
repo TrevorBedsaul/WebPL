@@ -47,10 +47,17 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link" href="#">Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="home.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+                <li class="nav-item"><a class="nav-link" href="home.php">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="search.php">Search</a></li>
             </ul>    
         </div>
+        <span class="navbar-text">
+            <?php if(isset($_COOKIE['user'])) : echo $_COOKIE['user'];?>
+                <a class="navbar-brand" href="logout.php">, Logout</a>
+            <?php else : ?>
+                <a class="navbar-brand" href="login.php">Login</a>
+            <?php endif; ?>        
+        </span>
 
     </nav>
 

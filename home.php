@@ -1,4 +1,4 @@
-<!-- 1. create HTML5 doctype -->
+<!-- used https://stackoverflow.com/questions/722379/can-html-be-embedded-inside-php-if-statement for php if-statement help -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +27,7 @@
         }
         setFocus();
         return true;
-    };
+    };   
 
 </script>
 
@@ -37,11 +37,18 @@
         <a class="navbar-brand" href="#">CrushRush</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="profile.php?Harold_Fratstar">Profile</a></li>
                 <li class="nav-item active"><a class="nav-link" href="#">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="search.html">Search</a></li>
+                <li class="nav-item"><a class="nav-link" href="search.php">Search</a></li>
             </ul>
         </div>
+        <span class="navbar-text">
+            <?php if(isset($_COOKIE['user'])) : echo $_COOKIE['user'];?>
+                <a class="navbar-brand" href="logout.php">, Logout</a>
+            <?php else : ?>
+                <a class="navbar-brand" href="login.php">Login</a>
+            <?php endif; ?>        
+        </span>
 
     </nav>
 
