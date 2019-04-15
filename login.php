@@ -20,7 +20,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="profile.php?Harold_Fratstar">Profile</a></li>
             <li class="nav-item"><a class="nav-link" href="home.php">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+            <li class="nav-item"><a class="nav-link" href="search.php">Search</a></li>
         </ul>                
     </div>
     <span class="navbar-text">
@@ -40,6 +40,9 @@
 			<div class="form-group">
 				<input type="password" class="form-control" name="password" placeholder="password" required>
 			</div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="school" placeholder="school" required>
+            </div>
 			<input type="submit" class="btn btn-primary" value="Login"/>
 		</form>
 	</div>
@@ -48,12 +51,17 @@
 <?php
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') { 
+
         $user = trim($_POST['username']);
-        if(!ctype_alnum($user)) {
-          reject('User Name');
+        $school = trim($_POST['school']);
+
+        if($school != "UVA") {            
+            echo "Currently only UVA is allowed";            
         }
         else{
             setcookie('user', $user, time()+3600);
+            session_start();
+            $_SESSION['school'] = $school;
             header("Location: home.php");
         }
     }

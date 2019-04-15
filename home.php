@@ -33,6 +33,10 @@
 
 <body onload="setFocus();" style="background-color: orange">
 
+    <?php
+        session_start();
+    ?>        
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">CrushRush</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,7 +47,7 @@
             </ul>
         </div>
         <span class="navbar-text">
-            <?php if(isset($_COOKIE['user'])) : echo $_COOKIE['user'];?>
+        <?php if(isset($_COOKIE['user'])) : echo $_COOKIE['user'] . " @ " . $_SESSION['school'];?>
                 <a class="navbar-brand" href="logout.php">, Logout</a>
             <?php else : ?>
                 <a class="navbar-brand" href="login.php">Login</a>

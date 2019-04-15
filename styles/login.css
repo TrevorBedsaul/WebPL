@@ -14,3 +14,8 @@
 	font-size: 30px;
 	font-family: Avantgarde;
 }
+
+#errorDiv {
+	display: inline-block;
+	color: red;
+}

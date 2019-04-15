@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="authors" content="Trevor Bedsaul and Andrew Kepley">
-    <title>Login</title>
+    <title>Logout</title>
 
     <!--bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
@@ -20,7 +20,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="profile.php?Harold_Fratstar">Profile</a></li>
             <li class="nav-item"><a class="nav-link" href="home.php">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Search</a></li>
+            <li class="nav-item"><a class="nav-link" href="search.php">Search</a></li>
         </ul>                
     </div>
     <span class="navbar-text">
@@ -33,7 +33,9 @@
 </div>
 
 <?php
+    session_start();
 	setcookie('user', $user, time()-3600);
+    unset($_SESSION['school']);
 ?>
 
 </body>
