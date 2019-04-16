@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rushees>
+    <rushee>
+        <name>John Doe</name>
+        <hometown>Charlottesville, VA</hometown>
+        <address>Gibbons 121</address>
+        <major>Economics</major>
+        <year>1st</year>
+    </rushee>
+    <rushee>
+        <name>Jack Smith</name>
+        <hometown>Fairfax, VA</hometown>
+        <address>Hancock 104</address>
+        <major>Computer Science</major>
+        <year>1st</year>
+    </rushee>
+    <rushee>
+        <name>Blake Browning</name>
+        <hometown>Richmond, VA</hometown>
+        <address>Grandmarc Apartment 2007</address>
+        <major>Statistics</major>
+        <year>2nd</year>
+    </rushee>
+</rushees>

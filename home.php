@@ -14,6 +14,32 @@
     <link rel="stylesheet" type="text/css" href="styles/home.css" />
 
 </head>
+
+<?php
+/*************************/
+/** insert data **/
+// function insertData($n, $h, $a, $m, $y)
+// {
+//     require('connect-db.php');
+
+//     $name = $n;
+//     $hometown = $h;
+//     $address = $a;
+//     $major = $m;
+//     $year = $y;
+
+//     $query = "INSERT INTO crushrush (name, hometown, address, major, year) VALUES (:name, :hometown, :address, :major, :year)";
+//     $statement = $db->prepare($query);
+//     $statement->bindValue(':name', $name);
+//     $statement->bindValue(':hometown', $hometown);
+//     $statement->bindValue(':address', $address);
+//     $statement->bindValue(':major', $major);
+//     $statement->bindValue(':year', $year);
+//     $statement->execute();
+//     $statement->closeCursor();
+// }
+?>
+
 <script>
     function setFocus() {
         document.getElementById('name').focus();
@@ -26,16 +52,54 @@
             return false;
         }
         setFocus();
-        return true;
-    };   
+        // var name = document.getElementById('name').value;
+        // var hometown = document.getElementById('hometown').value;
+        // var address = document.getElementById('address').value;
+        // var major = document.getElementById('major').value;
+        // var year = document.getElementById('year').value;
 
+
+        return true;
+    };
 </script>
 
 <body onload="setFocus();" style="background-color: orange">
 
+    <?php session_start(); ?>
+
     <?php
-        session_start();
-    ?>        
+    /*************************/
+    /** update data **/
+    // function updateData() {
+    //     require('connect-db.php');
+
+    //     $course_id = "id1";
+    //     $course_desc = "updated_from_updateData";
+
+    //     $query = "UPDATE courses SET course_desc=:course_desc WHERE courseID=:course_id";
+    //     $statement = $db->prepare($query);
+    //     $statement->bindValue(':course_id', $course_id);
+    //     $statement->bindValue(':course_desc', $course_desc);
+    //     $statement->execute();
+    //     $statement->closeCursor();   
+    // }
+    ?>
+
+    <?php
+    /*************************/
+    /** delete data **/
+    // function deleteData() {
+    //    require('connect-db.php');
+
+    //    $course_id = "newid_fr";
+
+    //    $query = "DELETE FROM courses WHERE courseID=:id";
+    //     $statement = $db->prepare($query);
+    //     $statement->bindValue(':id', $course_id);
+    //     $statement->execute();
+    //     $statement->closeCursor();
+    // }
+    ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">CrushRush</a>
@@ -47,11 +111,11 @@
             </ul>
         </div>
         <span class="navbar-text">
-        <?php if(isset($_COOKIE['user'])) : echo $_COOKIE['user'] . " @ " . $_SESSION['school'];?>
+            <?php if (isset($_COOKIE['user'])) : echo $_COOKIE['user'] . " @ " . $_SESSION['school']; ?>
                 <a class="navbar-brand" href="logout.php">, Logout</a>
             <?php else : ?>
                 <a class="navbar-brand" href="login.php">Login</a>
-            <?php endif; ?>        
+            <?php endif; ?>
         </span>
 
     </nav>
@@ -70,8 +134,7 @@
 
             <div class="form-group" style="float: left; padding-left: 2%; width:70%">
                 <label for="hometown">Hometown</label>
-                <input type="text" id="hometown" class="form-control" Placeholder="ex: Charlottesville, VA"
-                    name="hometown" />
+                <input type="text" id="hometown" class="form-control" Placeholder="ex: Charlottesville, VA" name="hometown" />
                 <span class="error" id="hometown-note"></span>
             </div>
 
@@ -99,11 +162,10 @@
 
         <!--Event Listener-->
         <script>
-            document.getElementById('name').addEventListener("input", function () {
+            document.getElementById('name').addEventListener("input", function() {
                 if (document.getElementById('name').value.indexOf(' ') == -1) {
                     document.getElementById('name-msg').textContent = "Please type in a full name";
-                }
-                else {
+                } else {
                     document.getElementById('name-msg').textContent = "";
                 }
             });
@@ -143,7 +205,7 @@
                 var newRow = tableRef.insertRow(tableRef.rows.length);
                 var rowdata = [name, hometown, major, year];
 
-                newRow.onmouseover = function () {
+                newRow.onmouseover = function() {
                     tableRef.clickedRowIndex = this.rowIndex;
                 };
                 var newCell = "";
@@ -156,7 +218,62 @@
                 }
             }
         };
+
+        function addRowFromXML(n, h, a, m, y) {
+            var name = n;
+            var hometown = h;
+            var major = m;
+            var year = y;
+            // var address = document.getElementById("address").value; <-too much stuff
+
+            var tableRef = document.getElementById("todoTable");
+            var newRow = tableRef.insertRow(tableRef.rows.length);
+            var rowdata = [name, hometown, major, year];
+
+            newRow.onmouseover = function() {
+                tableRef.clickedRowIndex = this.rowIndex;
+            };
+            var newCell = "";
+            var i = 0;
+            while (i < 4) {
+                newCell = newRow.insertCell(i);
+                newCell.innerHTML = rowdata[i];
+                newCell.onmouseover = this.rowIndex;
+                i++;
+            }
+        };
     </script>
+
+    <?php
+
+
+    //XML WORK
+    // retrieve all XML errors when loading the document, result in an array of errors
+    libxml_use_internal_errors(true);
+
+    $xml = simplexml_load_file("rushees.xml") or die("Error: Cannot create object");
+
+    ///////////////////////
+    // error handling
+    if ($xml === false) {  // failed loading XML, display error messages
+        foreach (libxml_get_errors() as $error) {
+            echo "$error->message <br/>";
+        }
+    }
+    /////////////////////
+    $array = array();
+    foreach ($xml->children() as $rushees) {
+        array_push($array, array($rushees->name, $rushees->hometown, $rushees->address, $rushees->major, $rushees->year));
+        // $array[0]['name'] = $rushees->name;
+        // $array[0]['hometown'] = $rushees->hometown;
+        // $array[0]['address'] = $rushees->address;
+        // $array[0]['major'] = $rushees->major;
+        // $array[0]['year'] = $rushees->year;
+        echo "<script type='text/javascript'>addRowFromXML('$rushees->name', '$rushees->hometown', '$rushees->address', '$rushees->major', '$rushees->year');</script>";
+    }
+
+    ?>
+
 </body>
 
 </html>
