@@ -9,20 +9,20 @@
   <hr />
 
   <form #attendeeForm="ngForm">
-    <div class="form-group">
-      <label>Name: </label>
+    <div class="form-group" [ngClass]="{colorForm: true}">
+      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Name: </label>
       <input required #name="ngModel" [class.is-invalid]="name.invalid" [(ngModel)]="attendeeModel.name" type="text"
         class="form-control" name="name">
       <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is requried</small>
     </div>
 
-    <div class="form-group">
-      <label>Contact Info(email or phone number): </label>
+    <div class="form-group" [ngClass]="{colorForm: true}">
+      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Contact Info(email or phone number): </label>
       <input [(ngModel)]="attendeeModel.email" class="form-control" name="contact">
     </div>
 
-    <div class="form-group">
-      <label>Event</label>
+    <div class="form-group" [ngClass]="{colorForm: true}">
+      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Event</label>
       <select [(ngModel)]="attendeeModel.event" class="custom-select" name="event">
         <option *ngFor="let event of events">{{event}} </option>
       </select>
