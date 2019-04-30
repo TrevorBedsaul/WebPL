@@ -3,6 +3,9 @@ import { Attendee } from './attendee';
 
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 
+//Trevor Bedsaul, Andrew Kepley
+//tdb7mw, ak2hr
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,7 +21,8 @@ export class AppComponent {
 
   people = ['Blake Browning', 'Jack Smith', 'John Doe'];
   events = ['Basketball', 'Crawfish Broil', 'Canes Chicken', 'Bowling', 'Cookout at 1508', 'Golf', 'Bennys Pizza'];
-  attendeeModel = new Attendee('someone', 'someone@uva.edu', 'nothing', true);
+  attendeeModel = new Attendee('', '', '', true);
+  checkedin = '';
 
   constructor(private http: HttpClient) { }
 
@@ -37,4 +41,8 @@ export class AppComponent {
         console.log('Error', error);
      })
   }
+
+  checkIn() {
+    this.checkedin = 'You have successfully checked in!';
+ }
 }
