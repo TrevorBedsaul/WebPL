@@ -2,8 +2,6 @@
   <h1>
     {{ title }}
   </h1>
-
-  {{ attendeeForm.value | json }}
   <br />
   {{ attendeeModel | json }}
   <hr />
@@ -40,7 +38,8 @@
       <ng-template #elseBlock><small class="text-primary">Your preferred contact method is phone</small></ng-template>
     </div>
 
-    <button class="btn btn-warning">Check-In</button>
+    <button class="btn btn-warning" (click)="checkIn()">Check-In</button>
+    <p>{{checkedin}}</p>
   </form>
 
 </div>
