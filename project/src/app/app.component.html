@@ -1,45 +1,47 @@
 <div class="container">
-  <h1>
+  <h1 [style.color]="'DarkBlue'">
     {{ title }}
   </h1>
-  <br />
-  {{ attendeeModel | json }}
+
+  <small [style.color]="'Orange'" [style.font-weight]="'bold'">{{ attendeeModel | json }}</small>
   <hr />
 
   <form #attendeeForm="ngForm">
-    <div class="form-group" [ngClass]="{colorForm: true}">
-      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Name: </label>
-      <input required #name="ngModel" [class.is-invalid]="name.invalid" [(ngModel)]="attendeeModel.name" type="text"
-        class="form-control" name="name">
-      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is requried</small>
-    </div>
-
-    <div class="form-group" [ngClass]="{colorForm: true}">
-      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Contact Info(email or phone number): </label>
-      <input [(ngModel)]="attendeeModel.email" class="form-control" name="contact">
-    </div>
-
-    <div class="form-check mb-3">
-      <input [(ngModel)]="attendeeModel.method" class=" form-check-input" type="checkbox" name="method">
-      <label class="form-check-label">Check this box if you input an email</label>
-    </div>
-
-    <div class="form-group" [ngClass]="{colorForm: true}">
+    <div class="form-group">
       <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Event</label>
-      <select [(ngModel)]="attendeeModel.event" class="custom-select" name="event">
+      <select [(ngModel)]="attendeeModel.event" [ngClass]="{colorForm: true}" class="custom-select" name="event">
         <option *ngFor="let event of events">{{event}} </option>
       </select>
     </div>
 
-    <div *ngIf="attendeeModel.method; else elseBlock"><small class="text-primary">Your preferred contact method is
+    <div class="form-group">
+      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Name: </label>
+      <input required #name="ngModel" [class.is-invalid]="name.invalid" [(ngModel)]="attendeeModel.name" type="text"
+        class="form-control" name="name" [ngClass]="{colorForm: true}">
+      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Please enter name</small>
+    </div>
+
+    <div class="form-group">
+      <label [style.color]="'DarkBlue'" [style.font-weight]="'bold'">Contact Info(email or phone number): </label>
+      <input [(ngModel)]="attendeeModel.email" [ngClass]="{colorForm: true}" class="form-control" name="contact">
+    </div>
+
+    <div class="form-check mb-3">
+      <input [(ngModel)]="attendeeModel.method" class=" form-check-input" type="checkbox" name="method">
+      <label class="form-check-label" [style.color]="'DarkBlue'">Check this box if you input an email</label>
+    </div>
+
+    <div *ngIf="attendeeModel.method; else elseBlock"><small [style.color]="'DarkBlue'">Note: Your preferred contact
+        method is
         email</small>
     </div>
     <div>
-      <ng-template #elseBlock><small class="text-primary">Your preferred contact method is phone</small></ng-template>
+      <ng-template #elseBlock><small [style.color]="'DarkBlue'">Note: Your preferred contact method is phone</small>
+      </ng-template>
     </div>
 
-    <button class="btn btn-warning" (click)="checkIn()">Check-In</button>
-    <p>{{checkedin}}</p>
+    <button class="btn btn-warning" (click)="checkIn()" [style.color]="'DarkBlue'">Check-In</button>
+    <p [style.color]="'DarkBlue'">{{checkedin}}</p>
   </form>
 
 </div>
