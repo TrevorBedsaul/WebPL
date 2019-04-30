@@ -33,6 +33,12 @@
       <label class="form-check-label">Check this box if you input an email</label>
     </div>
 
+    <div class="form-group">
+      <div *ngIf="method; else elseBlock"><small class="text-primary">Your preferred contact method is email</small>
+      </div>
+      <ng-template #elseBlock><small class="text-primary">Your preferred contact method is phone</small></ng-template>
+    </div>
+    
     <button class="btn btn-warning">Check-In</button>
   </form>
 
